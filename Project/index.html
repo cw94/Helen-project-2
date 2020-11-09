@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helen Wu</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="project_heading">Ocean</h1>
+    <section class="project_section project_section_desc">
+        <p id="keyword" class="project_desc">
+            Mysterious Undersea World
+        </p>
+        <iframe 
+        class="project_video"
+        width="560" height="315" src="https://www.youtube.com/embed/AgpWX18dby4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+    <section class="project_section">
+        <img id="img1" class="project_image" src="pic1.jpg" alt="">
+        <img id="img2" class="project_image" src="pic2.jpg" alt="">
+        <img id="img3" class="project_image" src="pic3.jpg" alt="">
+    </section>
+    <a class="project_link"
+    href="https://www.nationalgeographic.org/encyclopedia/ocean/"
+    target="_blank">More Information about Ocean</a>
+    <button id="button" class="project_button"> More Views </button>
+    <button id="button2" class="project_button2"> Deep Show </button>
+    
+    <p class="all_oceans">Oceans in the earth: </p>
+    <button id="button3" class="project_button3"> List Oceans </button>
+    <div class="project_ocean_name">
+        <h2 class="head_21">.<span id="ocean_name1"></span></h2>
+        <h2 class="head_22">.<span id="ocean_name2"></span></h2>
+        <h2 class="head_23">.<span id="ocean_name3"></span></h2>
+        <h2 class="head_24">.<span id="ocean_name4"></span></h2>
+    </div>
+
+    <p class="all_sea">Would you like to know more ? <span id="sea_name"></span></p>
+    <button id="button4" class="project_button4"> List Sea </button><br>
+    <div>
+        <p class="sea-name">Sea name: <input id="seaname" type="text"/></p>
+        <p class="sea-size">Sea size: <input id="seasize" type="text"/></p>
+        <p class="sea-deep">Sea deep: <input id="seadeep" type="text"/></p>
+    </div>
+    <button id="loadsea" class="load-sea">Load seas</button>
+    <button id="showsea" class="show-sea">Show Seas</button>
+    <button id="clearDB" class="clear-DB">Clear DB</button>
+    <div id="sealist" class="sea-list">
+
+    </div>
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
