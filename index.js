@@ -26,7 +26,14 @@ io.sockets.on('connection', function(socket) {
         //Send received data from this client to all other clients, NOT including this client
         //Choice: io.sockets.emit('data', data);--Send date to all clients including this client
         //socket.emit('data', data);--Send the data to just this client
-        socket.broadcast.emit('data', data);        
+        //socket.broadcast.emit('data', data);   
+        socket.broadcast.emit('data', data);     
+    });
+
+    //Listen for a message named 'ocean' from this client
+    socket.on('ocean', function(data) {
+        console.log("Received: 'ocean' " + data);  
+        io.sockets.emit('ocean', data);     
     });
 
     //Listen for this client to disconnect

@@ -105,7 +105,7 @@ window.addEventListener('load', function(){
     })
 })
 
-//------------------------------Socket io------------------------------------------------------
+//------------------------------Socket io with P5------------------------------------------------------
 //Open and connect socket
 let socket = io();
 
@@ -143,6 +143,54 @@ function draw() {
     noStroke();
     fill(250);
     ellipse(mouseX, mouseY, 20, 20);    
+}
+//-----------------------------------------Socket io with D3------------------------------------------
+//Create an SVG
+let svg = d3.select('#container')
+    .append("svg")
+    .attr("width", 800)
+    .attr("height", 1000);
+
+//when mouse click, pass mouse coordinate to server through "ocean" key word connection
+svg.on("click", function(){
+    let mousePos = { x: event.clientX-90, y: (event.clientY-230) };
+    console.log(mousePos);
+    socket.emit('ocean', mousePos);   
+})
+
+//Listen for messages named 'ocean' from the server and get mouse coordinate
+socket.on('ocean', function(Position) {
+    console.log(Position);
+    //run function to make circles only when mouse click
+    addSVG(Position);
+});
+
+function addSVG(mp) {   
+    
+    //make circle      
+    svg.append("circle")   
+    .attr("cx", mp.x)
+    .attr("cy", mp.y)
+    .attr("r", 50)
+    .attr("fill", "blue")
+
+    //mouseout effect
+    .on('mouseout', (evt, d) =>{
+        d3.select(evt.currentTarget)
+        .transition()
+        .duration(4000)
+        .attr("fill", "white")
+        .attr("r", "25")
+    })
+
+    //mouseover effect
+    .on('mouseover', (evt,d)=>{
+        d3.select(evt.currentTarget)
+        .transition()
+        .duration(4000)
+        .attr("fill", "red")
+        .attr("r", 25)
+    })    
 }
 
 //---------------------P5.JS  show  name,size and average deep of 4 biggest oceans----------------------------
